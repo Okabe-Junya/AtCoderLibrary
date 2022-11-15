@@ -33,6 +33,8 @@ def dijkstra(adj, n, s=0):  # adj: 隣接行列，n: ノード数，s: 始点ノ
     tmp = [(0, s)]
     while tmp:
         tmp_v = heapq.heappop(tmp)[1]
+        if seen[tmp_v]:
+            continue
         seen[tmp_v] = True
         for t, c in adj[tmp_v]:
             if (dist[t] > dist[tmp_v] + c) & (not seen[t]):
